@@ -36,6 +36,12 @@ def gestion_du_combat(joueur, monstre):
     jusqu’à ce qu’un le joueur ou le monstre n’ait plus de point de vie,
     et retournera le tableau de stats du joueur
     """
+    # On detecte quand le match sera nul :
+    if joueur[3] >= monstre[2] and joueur[2] <= monstre[3]:
+        # Si il l'est le houeur perd le nombre de point de vie du monstre
+        joueur[2] -= monstre[2]
+        return joueur
+
     # Tant que les deux personnages sont en vie
     while joueur[1] > 0 and monstre[1] > 0:
 
@@ -100,5 +106,7 @@ def compteur_ennemis_tue(joueur):
 
     return compteur
 
-print(compteur_ennemis_tue(['Joueur', 20, 5, 5]), 'monstres ont été tués.')
+if __name__ == '__main__':
+    joueur = [input('Entrez le nom de votre héro : '), 20, 5, 5]
+    print(f'{joueur[0]} à réussi à tué {compteur_ennemis_tue(joueur)} monstres.')
 
