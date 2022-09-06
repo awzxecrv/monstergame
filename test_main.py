@@ -24,7 +24,7 @@ def test_creation_du_monstre(monkeypatch):
         assert 0 <= monstre[3] <= 5
 
 
-def test_main_creation():
+def test_gestion_du_combat():
     joueurs  = [['a', 9, 0, 0], ['b', 10, 5, 1], ['c',10, 0, 0]]
     monstres = [['A', 1,10, 0],[ 'B', 10, 1, 1], ['C',10, 2, 0]]
     res      = [['a',-1, 0, 0], ['b', 10, 5, 1], ['c', 0, 0, 0]]
