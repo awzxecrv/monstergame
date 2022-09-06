@@ -36,13 +36,15 @@ def gestion_du_combat(joueur, monstre):
     jusqu’à ce qu’un le joueur ou le monstre n’ait plus de point de vie,
     et retournera le tableau de stats du joueur
     """
-
     # Tant que les deux personnages sont en vie
     while joueur[1] > 0 and monstre[1] > 0:
+
+        # Le monstre attaque le joueur
         joueur[1] = gestion_des_degats(monstre, joueur)
         if joueur[1] <= 0:
             continue
 
+        #Le joueur attaque le monstre
         monstre[1] = gestion_des_degats(joueur, monstre)
 
     #print(joueur, monstre)
