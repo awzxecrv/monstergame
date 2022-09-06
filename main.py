@@ -11,7 +11,11 @@ def gestion_des_degats(att, deff):
     force_attaque = att[2]
     armure_defenseur = deff[3]
 
-    pv_restant = pv_defenseur - (force_attaque - armure_defenseur)
+    degats = force_attaque - armure_defenseur
+    if degats < 0:
+        degats = 0
+
+    pv_restant = pv_defenseur - degats
     return pv_restant
 
 
@@ -54,8 +58,6 @@ def creation_du_personnage(pseudo, pv, forc, arm):
 
     return personnage
 
-#print(help(creation_du_personnage))
-
 
 def generation_du_monstre(monstre):
     """
@@ -79,13 +81,22 @@ def compteur_ennemis_tue(joueur):
     La fonction de compteur d’ennemis tués va s’incrémenter à chaque ennemi tué 
     et retourner cette valeur en fin de partie.
     """
-    compteur = 0
+    compteur = -1
     
     while joueur[1] > 0:
+        compteur += 1
         monstre = creation_du_monstre()
-        print(gestion_du_combat(joueur, monstre))
-        break
 
-    return None
-compteur_ennemis_tue(['toto', 10, 5, 5])
+        print(f'Monstre {compteur}, {monstre[0]} : {monstre[1]}PV, {monstre[2]}Force et {monstre[3]}Armure.')
+
+        joueur = gestion_du_combat(joueur, monstre)
+    
+        if joueur[1] > 0:
+            print(f'{monstre[0]} a était vaincu... Il reste {joueur[1]}PV à {joueur[0]} !')
+        else:
+            print(f'{monstre[0]} a tué {joueur[0]}...')
+
+    return compteur
+
+print(compteur_ennemis_tue(['Joueur', 20, 5, 5]), 'monstres ont été tués.')
 
