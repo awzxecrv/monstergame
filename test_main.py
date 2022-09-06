@@ -1,10 +1,9 @@
 import main
 
 def test_gestion_des_degats():
-    bob = ['Bob', 10, 5, 10]
+    bob  = ['Bob', 10, 5, 10]
     alice = ['Alice', 20, 15, 5]
 
-<<<<<<< HEAD
     pv_defenseur = main.gestion_des_degats(bob, alice)
 
     assert type(pv_defenseur) == int
@@ -21,7 +20,7 @@ def test_creation_du_monstre(monkeypatch):
         assert 5 <= monstre[1] <= 20
         assert 3 <= monstre[2] <= 8
         assert 0 <= monstre[3] <= 5
-=======
+
 def test_main_creation():
     joueurs  = [['a', 9, 0, 0], ['b', 10, 5, 1], ['c',10, 0, 0]]
     monstres = [['A', 1,10, 0],[ 'B', 10, 1, 1], ['C',10, 2, 0]]
@@ -30,4 +29,3 @@ def test_main_creation():
     for j,m,r in zip(joueurs, monstres, res):
         res = main.gestion_du_combat(j, m)
         assert res == r
->>>>>>> gestion_du_combat
