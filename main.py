@@ -7,5 +7,6 @@ def creation_du_monstre():
     demandant à l’utilisateur le nom voulu pour le monstre.
     La fonction renverra donc le tableau avec les statistiques du monstre.
     """
-    return None
+    n_monstre = input('Entrez le nom du monstre : ')
+    return generation_du_monstre(n_monstre)
 
