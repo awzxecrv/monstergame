@@ -41,6 +41,7 @@ def gestion_du_combat(joueur, monstre):
 
         monstre[1] = gestion_des_degats(joueur, monstre)
 
+    #print(joueur, monstre)
     return joueur
 
 
@@ -73,10 +74,18 @@ def generation_du_monstre(monstre):
     return monstre
 
 
-def compteur_ennemis_tue():
+def compteur_ennemis_tue(joueur):
     """
     La fonction de compteur d’ennemis tués va s’incrémenter à chaque ennemi tué 
     et retourner cette valeur en fin de partie.
     """
-    return None
+    compteur = 0
     
+    while joueur[1] > 0:
+        monstre = creation_du_monstre()
+        print(gestion_du_combat(joueur, monstre))
+        break
+
+    return None
+compteur_ennemis_tue(['toto', 10, 5, 5])
+
