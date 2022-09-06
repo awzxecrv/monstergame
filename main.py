@@ -1,5 +1,6 @@
+from random import randint
 
-def generation_du_monstre():
+def generation_du_monstre(monstre):
     """
     La fonction de génération du monstre prendra en paramètre 
     le nom du monstre et 
@@ -7,5 +8,11 @@ def generation_du_monstre():
     La valeur pour PV, Force et Armure seront des valeurs aléatoires 
     respectivement entre 5 et 20, 3 et 8, 0 et 5
     """
-    return None
+    pv = randint(5,20) 
+    forc = randint(3,8)
+    arm = randint(0,5)
 
+    monstre = [monstre, pv, forc, arm]
+       
+    return monstre
+    
