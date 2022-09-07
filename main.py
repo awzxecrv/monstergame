@@ -89,10 +89,9 @@ def compteur_ennemis_tue(joueur):
     La fonction de compteur d’ennemis tués va s’incrémenter à chaque ennemi tué 
     et retourner cette valeur en fin de partie.
     """
-    compteur = -1
+    compteur = 0
     
     while joueur[1] > 0:
-        compteur += 1
         monstre = creation_du_monstre()
 
         print(f'Monstre {compteur}, {monstre[0]} : {monstre[1]}PV, {monstre[2]}Force et {monstre[3]}Armure.')
@@ -101,12 +100,33 @@ def compteur_ennemis_tue(joueur):
     
         if joueur[1] > 0:
             print(f'{monstre[0]} a était vaincu... Il reste {joueur[1]}PV à {joueur[0]} !')
+            compteur += 1
         else:
             print(f'{monstre[0]} a tué {joueur[0]}...')
 
     return compteur
 
+def game():
+    total_kill = 0
+    nom_joueur = input('Entrez le nom de votre héro : ')
+    
+    answr = 'o'
+    while answr != 'n':
+        if answr != 'o':
+            answr = input('Demande incomprise, Voulez vous rejouer [o/n]')
+            continue
+
+        joueur = [nom_joueur, 20, 5, 5]
+
+        n_tue = compteur_ennemis_tue(joueur)
+        print(f'{joueur[0]} à réussi à tué {n_tue} monstres.')
+        total_kill += n_tue
+
+        answr = input('Voulez vous rejouer [o/n] ?')
+
+    print('Fin de partie,', nom_joueur, 'a tué', total_kill, 'monstres !')
+
+
 if __name__ == '__main__':
-    joueur = [input('Entrez le nom de votre héro : '), 20, 5, 5]
-    print(f'{joueur[0]} à réussi à tué {compteur_ennemis_tue(joueur)} monstres.')
+    game()
 
